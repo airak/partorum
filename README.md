@@ -1,6 +1,8 @@
 # Partorum
 
-Um sistema de gerenciamento de notas de leitura.
+Um sistema de gerenciamento de notas de leitura desenvolvido para a disciplina de "Tópicos Especiais em Engenharia de Software: Programação Web", CEFET-MG 2018/2.
+
+Integrantes do projeto:@Airak, @analuizatrz e @gabiapple
 
 ## Instalação (linux e mac)
 
