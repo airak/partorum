@@ -6,6 +6,8 @@
 {% block content %}
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
+  <p><a href="{% url 'clipping:list_clipping' %}">Lista de recortes</a></p>
+  <p><a href="{% url 'clipping:create_clipping' %}">Cadastrar um novo recorte</a></p>
   <p><a href="{% url 'core:logout' %}">logout</a></p>
 {% else %}
   <p>You are not logged in</p>
