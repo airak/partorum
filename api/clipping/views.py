@@ -12,25 +12,23 @@ from django.views.generic.list import ListView
 from django.contrib.auth.models import User
 from . import models
 
-
-class ClippingCreate(LoginRequiredMixin, CreateView):
-
+class ClippingSave():
 	model = models.Recorte
 	fields = ['texto', 'autor', 'livro', 'posicao']
 	template_name = 'create_clipping.html'
-	success_url = 'core:home'
+	success_url = reverse_lazy('core:home')
+
+
+class ClippingCreate(LoginRequiredMixin, ClippingSave, CreateView):
 
 	def form_valid(self, form):
 		clipping = form.save(commit=False)
 		clipping.user = self.request.user
 		clipping.save()
-		return redirect('core:home')
+		return super(SalvarTesouro, self).form_valid(form)
 
-class ClippingUpdate(LoginRequiredMixin, UpdateView):
-
-	model = models.Recorte
-	fields = ['texto', 'autor', 'livro', 'posicao']
-	template_name = 'clipping_update_form.html'
+class ClippingUpdate(LoginRequiredMixin, ClippingSave, UpdateView):
+	pass
 
 class ClippingDelete(LoginRequiredMixin, DeleteView):
     model = models.Recorte
