@@ -8,8 +8,8 @@
   <td>{{ object.user }}</td>
   <td>{{ object.livro }}</td>
   <td>{{ object.autor }}</td>
-  <td><a href="{% url "clipping:update_clipping" object.pk %}">editar</a></td>
-  <td><a href="{% url "clipping:remove_clipping" object.pk %}">excluir</a></td>
+  <td><a href="{% url "clipping:update_clipping" object.pk %}" data-toggle="tooltip" title="Editar"><i class="fa fa-edit"></i></i></a></td>
+  <td><a href="{% url "clipping:remove_clipping" object.pk %}" data-toggle="tooltip" title="Excluir"><i class="fa fa-trash"></i></a></td>
 </tr>
 </table>
 {% endfor %}
