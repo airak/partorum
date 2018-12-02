@@ -25,7 +25,7 @@ class ClippingCreate(LoginRequiredMixin, ClippingSave, CreateView):
 		clipping = form.save(commit=False)
 		clipping.user = self.request.user
 		clipping.save()
-		return super(SalvarTesouro, self).form_valid(form)
+		return super(ClippingSave, self).form_valid(form)
 
 class ClippingUpdate(LoginRequiredMixin, ClippingSave, UpdateView):
 	pass
