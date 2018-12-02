@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 {% for object in object_list %}
-<div class="row mx-5 my-4 border rounded">
+<div class="col-sm-12 col-md-10 col-lg-8 mx-auto px-0 my-2 border rounded">
   <div class="col-12">{{ object.texto }}</div>
   <!-- <div class="col-sm">{{ object.user }}</div> -->
-  <div class="col-sm bg-dark text-white">{{ object.autor }} - {{ object.livro }}, posição {{ object.posicao }}
+  <div class="col-12 bg-dark text-white">{{ object.autor }} - {{ object.livro }}, posição {{ object.posicao }}
     <a href="{% url "clipping:update_clipping" object.pk %}" data-toggle="tooltip" title="Editar"><i class="fa fa-edit text-white"></i></i></a>
     <a href="{% url "clipping:remove_clipping" object.pk %}" data-toggle="tooltip" title="Excluir"><i class="fa fa-trash text-white"></i></a>
   </div>
