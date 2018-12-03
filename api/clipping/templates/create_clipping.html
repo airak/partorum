@@ -3,7 +3,16 @@
 {% load crispy_forms_tags %}
 <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
     <form method="post">{% csrf_token %}
-        {{ form|crispy}}
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                {{ form.texto|as_crispy_field }}
+            </div>
+            <div class="col-md-6 col-sm-12">
+                {{ form.autor|as_crispy_field }}
+                {{ form.livro|as_crispy_field }}
+                {{ form.posicao|as_crispy_field }}
+            </div>
+        </div>            
         <input type="submit" class="btn btn-success" value="Save">
     </form>
 </div>
