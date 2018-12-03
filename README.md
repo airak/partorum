@@ -2,7 +2,7 @@
 
 Um sistema de gerenciamento de notas de leitura desenvolvido para a disciplina de "Tópicos Especiais em Engenharia de Software: Programação Web", CEFET-MG 2018/2.
 
-Integrantes do projeto:@Airak, @analuizatrz e @gabiapple
+Integrantes do projeto: Ana (@analuizatrz), Gabriela (@gabiapple) e Matheus (@Airak)
 
 ## Instalação (linux e mac)
 
