@@ -5,6 +5,8 @@ from django.views.generic import View
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
@@ -35,13 +37,16 @@ class ClippingDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('core:home')
     template_name = 'clipping_confirm_delete.html'
 
+@method_decorator(cache_page(60 * 5), name='dispatch')
 class ClippingListView(LoginRequiredMixin, ListView):
 
 	template_name = 'list_clipping.html'
 	model = models.Recorte
+	cache_timeout = 60
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
+		context['user'] = self.request.user
 		return context
 
 	def get_queryset(self):
