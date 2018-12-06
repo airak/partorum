@@ -2,16 +2,25 @@
 {% block content %}
 {% for object in object_list %}
 <div class="col-sm-12 col-md-10 col-lg-8 mx-auto px-0 my-2">
-  <div class="card">
-    <div class="card-body">{{ object.texto }}</div> 
-      <div class="card-footer">
-        <div class="row">
-          <div class="col-sm-12 col-md-10">
-            {{ object.livro }} de {{ object.autor }}, posição {{ object.posicao }}
-          </div>
-          <div class="col-sm-12 col-md-2 text-md-right text-center small">
-              <a href="{% url "clipping:update_clipping" object.pk %}" data-toggle="tooltip" title="Editar"><i class="fa fa-edit"></i></i></a>
-              <a href="{% url "clipping:remove_clipping" object.pk %}" data-toggle="tooltip" title="Excluir"><i class="fa fa-trash"></i></a>
+  <div class="card-deck">
+    <div class="card">
+        <img class="card-img-top img-fluid" src="https://source.unsplash.com/random/300x200" alt="">
+      <div class="card-body">
+      <blockquote class="card-bodyquote">
+        {{ object.texto }}
+      </blockquote>
+      </div> 
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-sm-12 col-md-8 text-muted">
+                <small>
+                  {{ object.livro }} de {{ object.autor }}, posição {{ object.posicao }}
+                </small>
+            </div>
+            <div class="col-sm-12 col-md-4 text-md-right text-center small">
+                <a href="{% url "clipping:update_clipping" object.pk %}" data-toggle="tooltip" title="Editar"><i class="fa fa-edit"></i></i></a>
+                <a href="{% url "clipping:remove_clipping" object.pk %}" data-toggle="tooltip" title="Excluir"><i class="fa fa-trash"></i></a>
+            </div>
           </div>
         </div>
       </div>
