@@ -7,12 +7,14 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
+  Olá {{ user.username }}!
   <p><a href="{% url 'clipping:list_clipping' %}">Lista de recortes</a></p>
   <p><a href="{% url 'clipping:create_clipping' %}">Cadastrar um novo recorte</a></p>
   <p><a href="{% url 'core:logout' %}">logout</a></p>
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'core:login' %}">login</a>
+  <h2>Olá :)</h2>
+  <h3>O que é <strong>Partorum</strong></h3>
+  <p>Partorum é uma plataforma onde você pode guardar todas as anotações do seus livros favoritos ;)</p>
+  <a href="{% url 'core:login' %}">Login</a>
 {% endif %}
 {% endblock %}
