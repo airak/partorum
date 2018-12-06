@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-{% for object in object_list %}
-<div class="col-sm-12 col-md-10 col-lg-8 mx-auto px-0 my-2">
-  <div class="card-deck">
+<div class="container col-sm-12 col-md-10 col-lg-8 mx-auto px-0 my-2">
+  <div class="card-columns">
+    {% for object in object_list %}
     <div class="card">
         <img class="card-img-top img-fluid" src="https://source.unsplash.com/random/300x200" alt="">
       <div class="card-body">
@@ -18,14 +18,31 @@
                 </small>
             </div>
             <div class="col-sm-12 col-md-4 text-md-right text-center small">
-                <a href="{% url "clipping:update_clipping" object.pk %}" data-toggle="tooltip" title="Editar"><i class="fa fa-edit"></i></i></a>
-                <a href="{% url "clipping:remove_clipping" object.pk %}" data-toggle="tooltip" title="Excluir"><i class="fa fa-trash"></i></a>
+              <a href="{% url "clipping:update_clipping" object.pk %}" data-toggle="tooltip" title="Editar"><i class="fa fa-edit"></i></i></a>
+              <a href="{% url "clipping:remove_clipping" object.pk %}" data-toggle="tooltip" title="Excluir"><i class="fa fa-trash"></i></a>
             </div>
           </div>
         </div>
       </div>
+      {% endfor %}
     </div>
   </div>
 </div>
-{% endfor %}
+<style>
+.card-columns {
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(md) {
+    column-count: 3;
+  }
+  @include media-breakpoint-only(sm) {
+    column-count: 2;
+  }
+}
+
+</style>
 {% endblock %}
