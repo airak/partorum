@@ -4,7 +4,7 @@
   <div class="card-columns">
     {% for object in object_list %}
     <div class="card">
-        <img class="card-img-top img-fluid" src="https://source.unsplash.com/random/300x200" alt="">
+      <img class="card-img-top img-fluid" id={{ object.autor }} alt="">
       <div class="card-body">
       <blockquote class="card-bodyquote">
         {{ object.texto }}
@@ -26,8 +26,8 @@
       </div>
       {% endfor %}
     </div>
-  </div>
 </div>
+
 <style>
 .card-columns {
   @include media-breakpoint-only(xl) {
@@ -45,4 +45,16 @@
 }
 
 </style>
+{% endblock %}
+
+{% block js %}
+<script>
+  let imgs = document.querySelectorAll(".card-img-top");
+  let count = 0;
+  imgs.forEach((img) => {
+    count++;
+    let url = "https://source.unsplash.com/300x200/?";
+    img.src =  url + img.id + "," + count;
+  });
+</script>
 {% endblock %}
