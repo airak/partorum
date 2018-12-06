@@ -2,19 +2,35 @@
 {% extends 'base.html' %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Olá {{ user.username }}!
-  <p><a href="{% url 'clipping:list_clipping' %}">Lista de recortes</a></p>
-  <p><a href="{% url 'clipping:create_clipping' %}">Cadastrar um novo recorte</a></p>
-  <p><a href="{% url 'core:logout' %}">logout</a></p>
-{% else %}
-  <h2>Olá :)</h2>
-  <h3>O que é <strong>Partorum</strong></h3>
-  <p>Partorum é uma plataforma onde você pode guardar todas as anotações do seus livros favoritos ;)</p>
-  <a href="{% url 'core:login' %}">Login</a>
-{% endif %}
+  <div class="container vertical-center">
+    {% if user.is_authenticated %}
+      Olá {{ user.username }}!
+    {% else %}
+      <h2>Olá :)</h2>
+    {% endif %}
+    <h3>O que é <strong>Partorum</strong></h3>
+    <p>Partorum é uma plataforma onde você pode guardar todas as anotações do seus livros favoritos ;)</p>
+
+
+  {% if user.is_authenticated %}
+    <div class="row">
+      <div class="col">
+        <p><a class="btn btn-primary" href="{% url 'clipping:list_clipping' %}">Lista de recortes</a></p>
+      </div>
+      <div class="col">
+        <p><a class="btn btn-primary" href="{% url 'clipping:create_clipping' %}">Cadastrar um novo recorte</a></p>
+      </div>
+      <div class="col">     
+        <p><a class="btn btn-primary" href="{% url 'core:logout' %}">logout</a></p>
+      </div>
+    </div>
+  {% else %}
+  <div class="row">
+    <a class="btn btn-primary" href="{% url 'core:login' %}">Login</a>
+  </div>
+  {% endif %}
+</div>
 {% endblock %}
